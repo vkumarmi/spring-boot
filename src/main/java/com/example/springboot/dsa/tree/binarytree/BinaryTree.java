@@ -1,6 +1,7 @@
 package com.example.springboot.dsa.tree.binarytree;
 
-import org.example.DSA.structure.tree.TreeNode;
+import com.example.springboot.dsa.tree.TreeNode;
+
 
 import java.util.LinkedList;
 import java.util.Queue;

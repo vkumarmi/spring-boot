@@ -1,6 +1,7 @@
 package com.example.springboot.javapractice.accessmodifier.house;
 
-import javapractice.accessmodifier.library.Book;
+
+import com.example.springboot.javapractice.accessmodifier.library.Book;
 
 public class StoryBook extends Book {
     public StoryBook(){

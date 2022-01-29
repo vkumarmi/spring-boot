@@ -1,6 +1,7 @@
 package com.example.springboot.interviews.ola;
 
-import org.example.DSA.structure.tree.bst.BinarySearchTreeImpl;
+
+import com.example.springboot.dsa.tree.bst.BinarySearchTreeImpl;
 
 public class SortTheBst {
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
-package com.example.springboot.design.system.banking;/*
-package design.system.banking;
+
+package com.example.springboot.design.system.banking;
+
 
 import org.junit.After;
 import org.junit.Assert;
@@ -9,41 +10,59 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HiddenTest {
-	*/
-/**
-	 * The bank/
-	 *//*
+
+
+
+
+
+
+
 
 	Bank bank;
-	*/
-/**
-	 * The account number for john.
-	 *//*
+
+
+
+
+
+
 
 	Long john;
-	*/
-/**
-	 * The account number for julia
-	 *//*
+
+
+
+
+
 
 	Long julia;
 
-	*/
-/**
-	 * The account number for daniel
-	 *//*
+
+
+
+
+
+
+
+
 
 	Long daniel;
-	*/
-/**
-	 * The account number for bob
-	 *//*
+
+
+
+
+
+
+
+
 
 	Long bob;
-	*/
-/**
-	 * The account number for smith
-	 *//*
+
+
+
+
+
+
+
+
 
 	Long smith;
 
@@ -94,10 +113,14 @@ public class HiddenTest {
 		Assert.assertNotEquals(bank.getBalance(bob), bank.getBalance(smith));
 	}
 
-	*/
-/**
-	 * Debit an account.
-	 *//*
+
+
+
+
+// Debit an account.
+
+
+
 
 	@Test
 	public void debitTest() {
@@ -109,10 +132,14 @@ public class HiddenTest {
 		assertTrue("Account " + smith + " should have sufficient funds.", bank.debit(smith, amount));
 	}
 
-	*/
-/**
-	 * Test crediting accounts inside {@link Bank}.
-	 *//*
+
+
+
+
+
+
+
+
 
 	@Test
 	public void bankCreditTest() {
@@ -134,27 +161,25 @@ public class HiddenTest {
 		assertEquals(beforeDeposit5 + amount, bank.getBalance(smith), 0);
 	}
 
-	*/
-/**
-	 * Tests {@link Transaction}: an attempt to access an account with an invalid PIN must throw an
-	 * Exception.
-	 *
-	 * @throws Exception
-	 *             Account validation failed.
-	 *//*
+
+
+
+
+
+
+
 
 	@Test(expected = Exception.class)
 	public void invalidPinTransaction() throws Exception {
 		new Transaction(bank, john, 9999);
 	}
 
-	*/
-/**
-	 * Tests {@link Transaction}
-	 *
-	 * @throws Exception
-	 *             Account validation failed.
-	 *//*
+
+
+
+
+
+
 
 	@Test
 	public void transactionTest() throws Exception {
@@ -180,4 +205,5 @@ public class HiddenTest {
 		assertEquals(t2.getBalance(), bank.getBalance(john), 0);
 	}
 }
-*/
+
+

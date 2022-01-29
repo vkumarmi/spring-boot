@@ -1,6 +1,7 @@
 package com.example.springboot.dsa.tree.bst;
 
-import org.example.DSA.structure.tree.TreeNode;
+import com.example.springboot.dsa.tree.TreeNode;
+
 
 public class BinarySearchTreeImpl implements BinarySearchTree {
     private TreeNode<Integer> root;

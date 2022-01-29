@@ -1,5 +1,5 @@
-package com.example.springboot.design.system.banking;/*
-package design.system.banking;
+package com.example.springboot.design.system.banking;
+
 
 import org.junit.After;
 import org.junit.Assert;
@@ -9,34 +9,29 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SampleTest {
-	*/
 /**
-	 * The bank/
-	 *//*
+	 * The bank/*/
+
 
 	Bank bank;
-	*/
 /**
-	 * The account number for Amelia Pond
-	 *//*
+	 * The account number for Amelia Pond*/
+
 
 	Long ameliaPond;
-	*/
 /**
-	 * The account number for Rose Tyler
-	 *//*
+	 * The account number for Rose Tyler*/
+
 
 	Long roseTyler;
-	*/
 /**
-	 * The account number for Acme Corp
-	 *//*
+	 * The account number for Acme Corp*/
+
 
 	Long acmeCorp;
-	*/
 /**
-	 * The account number for HackerRank
-	 *//*
+	 * The account number for HackerRank*/
+
 
 	Long hackerRank;
 
@@ -79,10 +74,9 @@ public class SampleTest {
 		Assert.assertNotEquals(bank.getBalance(acmeCorp), bank.getBalance(hackerRank));
 	}
 
-	*/
 /**
-	 * Debit an account.
-	 *//*
+	 * Debit an account.*/
+
 
 	@Test
 	public void debitTest() {
@@ -93,10 +87,9 @@ public class SampleTest {
 		assertTrue("Account " + hackerRank + " should have sufficient funds.", bank.debit(hackerRank, amount));
 	}
 
-	*/
 /**
-	 * Test crediting accounts inside {@link Bank}.
-	 *//*
+	 * Test crediting accounts inside {@link Bank}.*/
+
 
 	@Test
 	public void bankCreditTest() {
@@ -115,27 +108,25 @@ public class SampleTest {
 		assertEquals(beforeDeposit4 + amount, bank.getBalance(hackerRank), 0);
 	}
 
-	*/
 /**
 	 * Tests {@link Transaction}: an attempt to access an account with an invalid PIN must throw an
 	 * Exception.
 	 *
 	 * @throws Exception
-	 *             Account validation failed.
-	 *//*
+	 *             Account validation failed.*/
+
 
 	@Test(expected = Exception.class)
 	public void invalidPinTransaction() throws Exception {
 		new Transaction(bank, ameliaPond, 1234);
 	}
 
-	*/
 /**
 	 * Tests {@link Transaction}
 	 *
 	 * @throws Exception
-	 *             Account validation failed.
-	 *//*
+	 *             Account validation failed.*/
+
 
 	@Test
 	public void transactionTest() throws Exception {
@@ -150,4 +141,3 @@ public class SampleTest {
 		assertEquals(transaction1.getBalance(), bank.getBalance(ameliaPond), 0);
 	}
 }
-*/
