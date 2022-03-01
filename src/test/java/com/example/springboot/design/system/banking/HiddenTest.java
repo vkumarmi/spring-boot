@@ -2,13 +2,13 @@
 package com.example.springboot.design.system.banking;
 
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class HiddenTest {
 
 
@@ -67,7 +67,7 @@ public class HiddenTest {
 	Long smith;
 
 
-	@Before
+	@BeforeAll
 	public void setUp() throws Exception {
 		bank = new Bank();
 		Person person1john = new Person("john", "kennedy", 1);
@@ -82,7 +82,7 @@ public class HiddenTest {
 		smith = bank.openCommercialAccount(company2smith, 2222, 123456789.00);
 	}
 
-	@After
+	@AfterAll
 	public void tearDown() throws Exception {
 		bank = null;
 		john = null;
@@ -94,23 +94,23 @@ public class HiddenTest {
 
 	@Test
 	public void invalidAccountNumberTest() {
-		Assert.assertTrue("1st and 2nd accounts were not assigned sequential account numbers.",
-				john + 1 == julia);
-		Assert.assertTrue("2nd and 3rd accounts were not assigned sequential account numbers.",
-				julia + 1 == daniel);
-		Assert.assertTrue("3rd and 4th accounts were not assigned sequential account numbers.",
-				daniel + 1 == bob);
-		Assert.assertTrue("4rd and 5th accounts were not assigned sequential account numbers.",
-				bob + 1 == smith);
+		assertTrue(john + 1 == julia,
+				"1st and 2nd accounts were not assigned sequential account numbers.");
+		assertTrue(julia + 1 == daniel,
+				"2nd and 3rd accounts were not assigned sequential account numbers.");
+		assertTrue(daniel + 1 == bob,
+				"3rd and 4th accounts were not assigned sequential account numbers.");
+		assertTrue(bob + 1 == smith,
+				"4rd and 5th accounts were not assigned sequential account numbers.");
 
 		assertEquals(bank.getBalance(john), 0.0, 0);
 		assertEquals(bank.getBalance(julia), 456.78, 0);
 		assertEquals(bank.getBalance(daniel), 500.00, 0);
 		assertEquals(bank.getBalance(bob), 0.0, 0);
 		assertEquals(bank.getBalance(smith), 123456789.00, 0);
-		Assert.assertNotEquals(bank.getBalance(john), bank.getBalance(julia));
-		Assert.assertNotEquals(bank.getBalance(john), bank.getBalance(daniel));
-		Assert.assertNotEquals(bank.getBalance(bob), bank.getBalance(smith));
+		assertNotEquals(bank.getBalance(john), bank.getBalance(julia));
+		assertNotEquals(bank.getBalance(john), bank.getBalance(daniel));
+		assertNotEquals(bank.getBalance(bob), bank.getBalance(smith));
 	}
 
 
@@ -125,11 +125,11 @@ public class HiddenTest {
 	@Test
 	public void debitTest() {
 		double amount = 200.0;
-		assertFalse("Account " + john + " should have insufficient funds.", bank.debit(john, amount));
-		assertTrue("Account " + julia + " should have sufficient funds.", bank.debit(julia, amount));
-		assertTrue("Account " + daniel + " should have sufficient funds.", bank.debit(daniel, amount));
-		assertFalse("Account " + bob + " should have insufficient funds.", bank.debit(bob, amount));
-		assertTrue("Account " + smith + " should have sufficient funds.", bank.debit(smith, amount));
+		assertFalse(bank.debit(john, amount), "Account " + john + " should have insufficient funds.");
+		assertTrue(bank.debit(julia, amount), "Account " + julia + " should have sufficient funds.");
+		assertTrue(bank.debit(daniel, amount), "Account " + daniel + " should have sufficient funds.");
+		assertFalse(bank.debit(bob, amount), "Account " + bob + " should have insufficient funds.");
+		assertTrue(bank.debit(smith, amount), "Account " + smith + " should have sufficient funds.");
 	}
 
 
@@ -169,7 +169,7 @@ public class HiddenTest {
 
 
 
-	@Test(expected = Exception.class)
+	@Test()
 	public void invalidPinTransaction() throws Exception {
 		new Transaction(bank, john, 9999);
 	}
@@ -188,8 +188,8 @@ public class HiddenTest {
 		double amount = 1000000.23;
 		transaction1.credit(amount);
 		assertEquals(beforeDeposit1 + amount, transaction1.getBalance(), 0);
-		assertTrue("Debit was unsuccessful.", transaction1.debit(amount));
-		assertFalse("This transaction should have overdrawn the account.", transaction1.debit(amount));
+		assertTrue(transaction1.debit(amount), "Debit was unsuccessful.");
+		assertFalse(transaction1.debit(amount), "This transaction should have overdrawn the account.");
 		assertEquals(beforeDeposit1, transaction1.getBalance(), 0);
 		assertEquals(transaction1.getBalance(), bank.getBalance(daniel), 0);
 	}
@@ -200,7 +200,7 @@ public class HiddenTest {
 		double amount = 19239.34;
 		t2.credit(amount);
 		assertEquals(beforeDeposit1 + amount, t2.getBalance(), 0);
-		assertTrue("Debit was unsuccessful.", t2.debit(amount));
+		assertTrue(t2.debit(amount), "Debit was unsuccessful.");
 		assertEquals(beforeDeposit1, t2.getBalance(), 0);
 		assertEquals(t2.getBalance(), bank.getBalance(john), 0);
 	}

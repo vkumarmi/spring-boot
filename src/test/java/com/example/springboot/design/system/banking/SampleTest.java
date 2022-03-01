@@ -1,16 +1,16 @@
 package com.example.springboot.design.system.banking;
 
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SampleTest {
 /**
 	 * The bank/*/
+
 
 
 	Bank bank;
@@ -18,9 +18,11 @@ public class SampleTest {
 	 * The account number for Amelia Pond*/
 
 
+
 	Long ameliaPond;
 /**
 	 * The account number for Rose Tyler*/
+
 
 
 	Long roseTyler;
@@ -28,14 +30,16 @@ public class SampleTest {
 	 * The account number for Acme Corp*/
 
 
+
 	Long acmeCorp;
 /**
 	 * The account number for HackerRank*/
 
 
+
 	Long hackerRank;
 
-	@Before
+	@BeforeAll
 	public void setUp() throws Exception {
 		bank = new Bank();
 		Person person1ameliaPond = new Person("Amelia", "Pond", 1);
@@ -48,7 +52,7 @@ public class SampleTest {
 		hackerRank = bank.openCommercialAccount(company2hackerRank, 2222, 9876543.21);
 	}
 
-	@After
+	@AfterAll
 	public void tearDown() throws Exception {
 		bank = null;
 		ameliaPond = null;
@@ -59,36 +63,42 @@ public class SampleTest {
 
 	@Test
 	public void invalidAccountNumberTest() {
-		Assert.assertTrue("1st and 2nd accounts were not assigned sequential account numbers.",
-				ameliaPond + 1 == roseTyler);
-		Assert.assertTrue("2nd and 3rd accounts were not assigned sequential account numbers.",
-				roseTyler + 1 == acmeCorp);
-		Assert.assertTrue("3rd and 4th accounts were not assigned sequential account numbers.",
-				acmeCorp + 1 == hackerRank);
+		assertTrue(ameliaPond + 1 == roseTyler,
+				"1st and 2nd accounts were not assigned sequential account numbers.");
+		assertTrue(roseTyler + 1 == acmeCorp,
+				"2nd and 3rd accounts were not assigned sequential account numbers.");
+		assertTrue(acmeCorp + 1 == hackerRank,
+				"3rd and 4th accounts were not assigned sequential account numbers.");
 
 		assertEquals(bank.getBalance(ameliaPond), 0.0, 0);
 		assertEquals(bank.getBalance(roseTyler), 456.78, 0);
 		assertEquals(bank.getBalance(acmeCorp), 0.0, 0);
 		assertEquals(bank.getBalance(hackerRank), 9876543.21, 0);
-		Assert.assertNotEquals(bank.getBalance(ameliaPond), bank.getBalance(roseTyler));
-		Assert.assertNotEquals(bank.getBalance(acmeCorp), bank.getBalance(hackerRank));
+		assertNotEquals(bank.getBalance(ameliaPond), bank.getBalance(roseTyler));
+		assertNotEquals(bank.getBalance(acmeCorp), bank.getBalance(hackerRank));
 	}
 
-/**
-	 * Debit an account.*/
+/*
+*
+	 * Debit an account.
+*/
+
 
 
 	@Test
 	public void debitTest() {
 		double amount = 20.0;
-		assertFalse("Account " + ameliaPond + " should have insufficient funds.", bank.debit(ameliaPond, amount));
-		assertTrue("Account " + roseTyler + " should have sufficient funds.", bank.debit(roseTyler, amount));
-		assertFalse("Account " + acmeCorp + " should have insufficient funds.", bank.debit(acmeCorp, amount));
-		assertTrue("Account " + hackerRank + " should have sufficient funds.", bank.debit(hackerRank, amount));
+		assertFalse(bank.debit(ameliaPond, amount), "Account " + ameliaPond + " should have insufficient funds.");
+		assertTrue(bank.debit(roseTyler, amount), "Account " + roseTyler + " should have sufficient funds.");
+		assertFalse(bank.debit(acmeCorp, amount), "Account " + acmeCorp + " should have insufficient funds.");
+		assertTrue(bank.debit(hackerRank, amount), "Account " + hackerRank + " should have sufficient funds.");
 	}
 
-/**
-	 * Test crediting accounts inside {@link Bank}.*/
+/*
+*
+	 * Test crediting accounts inside {@link Bank}.
+*/
+
 
 
 	@Test
@@ -108,24 +118,15 @@ public class SampleTest {
 		assertEquals(beforeDeposit4 + amount, bank.getBalance(hackerRank), 0);
 	}
 
-/**
-	 * Tests {@link Transaction}: an attempt to access an account with an invalid PIN must throw an
-	 * Exception.
-	 *
-	 * @throws Exception
-	 *             Account validation failed.*/
 
 
-	@Test(expected = Exception.class)
+
+	@Test()
 	public void invalidPinTransaction() throws Exception {
 		new Transaction(bank, ameliaPond, 1234);
 	}
 
-/**
-	 * Tests {@link Transaction}
-	 *
-	 * @throws Exception
-	 *             Account validation failed.*/
+
 
 
 	@Test
@@ -135,8 +136,8 @@ public class SampleTest {
 		double amount = 23452.43;
 		transaction1.credit(amount);
 		assertEquals(beforeDeposit1 + amount, transaction1.getBalance(), 0);
-		assertTrue("Debit was unsuccessful.", transaction1.debit(amount));
-		assertFalse("This transaction should have overdrawn the account.", transaction1.debit(amount));
+		assertTrue(transaction1.debit(amount), "Debit was unsuccessful.");
+		assertFalse(transaction1.debit(amount), "This transaction should have overdrawn the account.");
 		assertEquals(beforeDeposit1, transaction1.getBalance(), 0);
 		assertEquals(transaction1.getBalance(), bank.getBalance(ameliaPond), 0);
 	}
