@@ -1,0 +1,25 @@
+100	300	10	500	200	130 1000 500 200 900
+
+300-500-130=930
+
+
+
+100+10+200=310
+300+500+130=930
+
+public int maxSum(int [] array,int n){
+
+Map<Integer,Integer> maxSum=new HashMap<>();
+
+for(int i=n-1;i>=0;i--){go
+
+maxSum.put(i,getmax(i,array)+get);
+}
+
+private int getMax(int startIndex,int [] array){
+
+
+}
+
+
+}

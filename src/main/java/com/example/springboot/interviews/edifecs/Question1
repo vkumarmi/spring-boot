@@ -1,0 +1,109 @@
+/**
+* A Parking lot has 5 levels
+* Each level has 50 rows
+* Each row has 50 parking spaces
+*
+* Allot parking space to incoming cars.
+* Free up parking space based upon exiting cars.
+*
+* Assume this class is available in a web application.
+* There are two rest APIs, one for entry and another for exit
+* each calling the respective methods of this class.
+*
+*/
+public class ParkingLot {
+
+Map<String,ParkingSlot> alloted=new HashMap<>();
+
+//Set<ParkingSlot> parkingSlots=new LinkedHashSet<>();
+
+Queue<ParkingSlot> available=new LinkedList<>();
+
+*
+* @param carNumber of car entering the parking lot
+* @return parkingSpace e.g level-row-space
+*/
+public String carEntry(final String carNumber) {
+ParkingSlot slot=available.dequeue();
+String slotNumber;
+synchronized(slot){
+alloted.put(carNumber,slot);
+slotNumber=slot.leve+"-"+slot.row+"-"+slot.sequence;
+}
+return slotNumber;
+
+}
+public void carExit(final String carNumber) {
+ParkingSlot slot=alloted.get(carNumber);
+if(slot!=null)
+synchronized(slot){
+alloted.remove(carNumber);
+available.enqueue(slot);
+}
+}
+
+class ParkingSlot{
+
+private int level;
+
+private int row;
+
+private sequence;
+
+
+
+private static final MAX_ROWS=50;
+private static final MAX_SLOTS=50;
+
+public ParkingSlot(int level,int row,int sequence){
+this.level=level;
+this.row=row;
+this.sequence=sequence;
+}
+
+
+@Override
+public int hashCode(){
+
+return Objetcs.hash(this.level,this.row.this.sequence);
+}
+
+@Override
+public booelan equals(Object o){
+
+if(o==null ) return false
+
+if(this==o)return true;
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+* Assume there are multiple entry gates and multiple exit gates in the parking lot.
+
+
+
+
+cases -
+There is only one gate in the parking lot.
+One person manages entry and exit of cars.
+[no concurrent access to the data]
+
+There are two gates in the parking lot.
+One entry and One exit with one person at each gate.
+[concurrent access to the data]
+
+There are multiple entry gates and multiple exit gates.
+[concurrent read and write access to the data]

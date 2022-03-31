@@ -1,0 +1,46 @@
+class Counter{
+
+private int count;
+
+
+public void incrementCount(){
+
+count++;
+
+}
+
+public int getCount(){
+
+return count;
+}
+
+
+}
+
+slabs-0-2.5: 0
+2.5 -5 :5
+5.0 - 10: 20
+>10:30
+
+
+8 lacs
+
+Class Slab{
+
+double min;
+
+double max;
+
+double taxPercentage;
+
+}
+
+
+List<Slab> slabs=new ArrayList<>();
+
+if(amount>0
+
+
+9 -coins
+fake- heavier
+
