@@ -11,7 +11,10 @@ public class ProvarTest {
         int status = -1;
 
         Stack<Character> stack = new Stack<>();
-        Map<Character, Character> bracketsMap = Map.of(')', '(',']', '[','}', '{');
+        Map<Character, Character> bracketsMap = new HashMap<>();
+        bracketsMap.put(')', '(');
+        bracketsMap.put(']', '[');
+        bracketsMap.put('}', '{');
 
         for (int i = 0; i < str.length(); i++) {
             char nextChar = str.charAt(i);

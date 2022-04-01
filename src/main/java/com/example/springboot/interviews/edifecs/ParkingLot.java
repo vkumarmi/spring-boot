@@ -46,7 +46,7 @@ import java.util.*;
               throw new RuntimeException("Car is already parked ");
           }
           if(available.isEmpty()){
-              throw new RuntimeException("Parking is full")
+              throw new RuntimeException("Parking is full");
           }
           ParkingSlot slot=available.poll();
 
