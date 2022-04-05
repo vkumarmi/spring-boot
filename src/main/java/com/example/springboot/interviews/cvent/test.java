@@ -1,12 +1,13 @@
 package com.example.springboot.interviews.cvent;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class test {
     public static void main(String [] args){
-        List<String> list=List.of("23");
+        List<String> list= Arrays.asList("23");
         test test=new test();
         list.stream().forEach(number->{
             System.out.println(" total divisible count is ::>>"+test.solution(number));

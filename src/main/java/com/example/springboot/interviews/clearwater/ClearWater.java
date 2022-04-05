@@ -1,9 +1,6 @@
 package com.example.springboot.interviews.clearwater;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class ClearWater {
@@ -49,7 +46,8 @@ public class ClearWater {
     }
 
     public static void main(String[] args) {
-        List<Integer> list=List.of(1,2,1,3,1,2,1,4,5,1,2,3,4,1,2,3,50000);
+
+        List<Integer> list=Arrays.asList(1,2,1,3,1,2,1,4,5,1,2,3,4,1,2,3,50000);
         System.out.println(minSum(list,10));
     }
 }
