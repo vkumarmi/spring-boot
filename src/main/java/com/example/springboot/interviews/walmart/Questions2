@@ -1,0 +1,81 @@
+abc
+a
+b
+c
+ab
+bc
+abc
+
+public void printAllSubstrings(String str){
+
+int n=str.length();
+
+for(int i=1;i<=n;i++){
+int j=0;
+while(j+i<=n){
+System.out.println(str.substring(j,j+i));
+j++;
+}
+
+
+}
+
+
+
+
+}
+
+Car - color, brand
+
+Car c1=new car("red","ferrari")
+Car c2=new car("red","ferrari");
+c1.equals()
+
+
+String s1=new String("Virendra")
+String s2=new String("Virendra")
+
+s1==s2==false
+s1.equals(s2)==true
+
+
+
+Player-
+Chess Board
+chess piece -interface --- pawn--, king, queen , rook , bishop. etc
+
+
+Interface Piece{
+
+void move();
+
+boolean isActive()
+
+}
+
+
+class Player{
+
+name;
+color;
+
+boolen isTurn;
+
+}
+
+
+class ChessBoard{
+
+
+Square[][] board=new Square[8][8];
+
+
+
+
+}
+
+class Square{
+color
+
+
+}
