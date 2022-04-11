@@ -1,0 +1,91 @@
+
+class Node{
+int data;
+Node left;
+Node right;
+Node next;
+}
+
+
+public Node levelOrderSuccessor(Node root,int k){
+
+if(root==null){
+	return null;
+}
+Queue<Node> queue=new LinkedList<>();
+
+Node temp=root;
+
+queue.enque(temp);
+while(!queue.isEmpty()){
+
+	temp=queue.dequeue();
+
+	if(temp.left!=null){
+		queue.enque(temp.left);
+
+	}
+	if(temp.right!=null){
+
+		queue.enque(temp.right);
+	}
+
+
+	if(temp.data==k){
+		return queue.dequeue();
+
+	}
+
+
+
+}
+
+return null;
+}
+
+
+}
+
+
+
+
+
+public void connectNextAncestor(Node root){
+if(root==null){
+	return null;
+}
+Queue<Node> queue=new LinkedList<>();
+
+queue.add(root);
+
+while(!queue.isEmpty()){
+
+temp=queue.poll();
+if(temp.left!=null){
+queue.add(temp.left);
+}
+if(temp.right!=null){
+queue.add(temp.right);
+
+}
+temp.next=queue.peek();
+
+}
+
+}
+
+
+public void execute( Runnable r){
+
+Implementation of ThreadPool Executor
+
+Lock and synchronization
+
+wait and notify and notifyAll
+
+
+}
+
+
+
+
