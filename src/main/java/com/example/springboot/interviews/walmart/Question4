@@ -1,0 +1,89 @@
+
+
+
+Booking System- city- multiple Threaters--- many screens-- shows---  timing--
+											sitting arrangments
+
+
+User - name,contact, emailId,
+
+
+
+
+
+class Theatre{
+
+name;
+address;
+Set<Screens>  screens;
+
+Map<Screens,Shows>  shows;
+
+
+
+
+}
+
+
+
+class Screen{
+
+int totalCapacity;
+
+Set<Seat> seats;
+
+Enum category{
+Front
+Middle
+Upper
+
+
+
+}
+
+class Seat {
+String rowName;
+String columnName;
+category category;
+
+}
+
+
+Map<Caregory,Price>  prices;
+
+}
+
+class Show{
+
+name;
+Set<Timings> showTimings;
+
+
+}
+
+
+class Booking{
+
+User user
+
+Threatre theatreName;
+
+Show showname
+
+Set<Seat> seats
+
+boolean bookingStatus;
+
+boolean paymentStatus
+
+Payment paymentId;
+
+}
+
+
+class Payment{
+
+
+
+
+}

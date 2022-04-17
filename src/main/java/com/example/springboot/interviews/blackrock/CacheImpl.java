@@ -1,5 +1,8 @@
-package com.example.springboot.interviews.blackrock;/*
-package interviews.blackrock;
+/*
+
+package com.example.springboot.interviews.blackrock;
+
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +11,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class CacheImpl {
-    private Map<CacheKey,String> map=new HashMap<>();
+    private
     private static final long retentionPeriod=30*60*1000;
     private static  long lastReloadCalled;
     private static final long MAX_SIZE=10000;
@@ -70,6 +73,8 @@ public class CacheImpl {
 
 
     }
+
+
 
 
 
