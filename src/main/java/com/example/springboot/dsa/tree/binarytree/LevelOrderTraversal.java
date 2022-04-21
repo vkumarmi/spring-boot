@@ -2,8 +2,6 @@ package com.example.springboot.dsa.tree.binarytree;
 
 import com.example.springboot.dsa.tree.TreeNode;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -12,7 +10,8 @@ public class LevelOrderTraversal {
     public static void main(String[] args) {
 
         binaryTree.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5);
-        System.out.println(binaryTree.height(binaryTree.getRoot()));
+       // new LevelOrderTraversal().levelOrderUsingQueue(binaryTree.getRoot());
+        new LevelOrderTraversal().levelOrderUsingRecursion(binaryTree.getRoot());
     }
     public void levelOrderUsingQueue(TreeNode<Integer> root){
         Queue<TreeNode<Integer>> queue=new LinkedList<>();
@@ -35,13 +34,22 @@ public class LevelOrderTraversal {
     }
 
     public void levelOrderUsingRecursion(TreeNode<Integer> root){
-        int height= binaryTree.height(binaryTree.getRoot());
+        int height= binaryTree.height(root);
         for (int i=1;i<=height;i++){
-            printNodeAtLevel(binaryTree.getRoot(),i);
+            printNodeAtLevel(root,i);
         }
     }
     public void printNodeAtLevel(TreeNode<Integer> root,int height){
-        ServletRequest
+        if(root==null){
+            return;
+        }
+        if(height==1){
+            System.out.println(root.getData());
+        }
+        else{
+            printNodeAtLevel(root.getLeft(),height-1);
+            printNodeAtLevel(root.getRight(),height-1);
+        }
     }
 
 }
