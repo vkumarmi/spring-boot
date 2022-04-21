@@ -10,7 +10,8 @@ public class BTInsertionAndTraversal {
                 .addNode(5)
                 .addNode(6)
                 .addNode(7)
-                .addNode(8)
-                .levelOrder(bt.getRoot());
+                .addNode(8);
+        LevelOrderTraversal levelOrderTraversal=new LevelOrderTraversal();
+                levelOrderTraversal.levelOrderUsingRecursion(bt.getRoot());
     }
 }

@@ -16,9 +16,10 @@ public class SwapLeftAndRightNode {
                 .addNode(8);
 
         TreeNode<Integer> temp=bt.getRoot();
-        bt.levelOrder(temp);
+        LevelOrderTraversal levelOrderTraversal=new LevelOrderTraversal();
+        levelOrderTraversal.levelOrderUsingQueue(temp);
         swapLeftAndRightNode(temp);
-        bt.levelOrder(temp);
+        levelOrderTraversal.levelOrderUsingQueue(temp);
 
     }
     public static void swapLeftAndRightNode(TreeNode<Integer> root){

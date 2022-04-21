@@ -47,25 +47,19 @@ public class BinaryTree {
         return this;
     }
 
-    public void levelOrder(TreeNode<Integer> root){
-        Queue<TreeNode<Integer>>  queue=new LinkedList<>();
-        queue.add(root);
-
-        while(!queue.isEmpty()){
-            TreeNode<Integer> temp=queue.peek();
-            queue.remove();
-            System.out.println("TreeNode<Integer> org.example.DSA.structure.data is :"+temp.getData());
-            if(temp.getLeft()!=null){
-                queue.add(temp.getLeft());
-                System.out.println(temp.getData()+"parent->>>>left child"+temp.getLeft().getData());
-            }
-            if(temp.getRight()!=null){
-                queue.add(temp.getRight());
-                System.out.println(temp.getData()+"parent->>>>right child"+temp.getRight().getData());
-            }
+        public int height(TreeNode<Integer> root){
+        if(root==null){
+            return 0;
+        }
+        int lHeight=height(root.getLeft());
+        int rHeight=height(root.getRight());
+        if(lHeight>rHeight){
+            return lHeight+1;
+        }else{
+            return rHeight+1;
+        }
 
         }
-    }
 
     public TreeNode<Integer> getRoot(){
         return this.root;
