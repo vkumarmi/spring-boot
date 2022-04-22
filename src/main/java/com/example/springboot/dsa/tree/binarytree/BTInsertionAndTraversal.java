@@ -11,7 +11,7 @@ public class BTInsertionAndTraversal {
                 .addNode(6)
                 .addNode(7)
                 .addNode(8);
-        LevelOrderTraversal levelOrderTraversal=new LevelOrderTraversal();
-                levelOrderTraversal.levelOrderUsingRecursion(bt.getRoot());
+        BFSTreeTraversals BFSTreeTraversals =new BFSTreeTraversals();
+                BFSTreeTraversals.levelOrderUsingRecursion(bt.getRoot());
     }
 }

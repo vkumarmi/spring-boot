@@ -5,13 +5,13 @@ import com.example.springboot.dsa.tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class LevelOrderTraversal {
+public class BFSTreeTraversals {
     static BinaryTree  binaryTree=new BinaryTree();
     public static void main(String[] args) {
 
         binaryTree.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5);
        // new LevelOrderTraversal().levelOrderUsingQueue(binaryTree.getRoot());
-        new LevelOrderTraversal().levelOrderUsingRecursion(binaryTree.getRoot());
+        new BFSTreeTraversals().levelOrderUsingRecursion(binaryTree.getRoot());
     }
     public void levelOrderUsingQueue(TreeNode<Integer> root){
         Queue<TreeNode<Integer>> queue=new LinkedList<>();
@@ -51,5 +51,8 @@ public class LevelOrderTraversal {
             printNodeAtLevel(root.getRight(),height-1);
         }
     }
+
+
+
 
 }
