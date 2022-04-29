@@ -8,19 +8,28 @@ import java.util.Queue;
 public class MirrorTree {
     static BinaryTree bt = new BinaryTree();
 
-    public TreeNode<Integer> mirrorTreeRecursive(TreeNode<Integer> root) {
+    public static void main(String[] args) {
+        bt.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5);
+        BFSTreeTraversals bfs=new BFSTreeTraversals();
+        TreeNode<Integer> root=bt.getRoot();
+       bfs.levelOrderUsingRecursion(root);
+        root=mirrorTreeIterative(root);
+        bfs.levelOrderUsingRecursion(root);
+
+    }
+
+    public static TreeNode<Integer> mirrorTreeRecursive(TreeNode<Integer> root) {
         if (root == null) {
             return root;
         }
         TreeNode<Integer> left = mirrorTreeRecursive(root.getLeft());
         TreeNode<Integer> right = mirrorTreeRecursive(root.getRight());
-        TreeNode<Integer> temp = left;
-        left = right;
-        right = temp;
+        root.setRight(left);
+        root.setLeft(right);
         return root;
     }
 
-    public TreeNode<Integer> mirrorTreeIterative(TreeNode<Integer> root){
+    public static TreeNode<Integer> mirrorTreeIterative(TreeNode<Integer> root){
         Queue<TreeNode<Integer>> queue=new LinkedList<>();
         queue.add(root);
         TreeNode<Integer> current;

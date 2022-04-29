@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.9'
+	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
@@ -8,6 +8,16 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+springBoot {
+	buildInfo {
+		properties {
+			artifact = 'com.example'
+			version = '0.0.1-SNAPSHOT'
+			group = 'com.example'
+			name = 'spring-boot'
+		}
+	}
+}
 repositories {
 	mavenCentral()
 }
@@ -18,8 +28,15 @@ dependencies {
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.github.vladimir-bukhtoyarov:bucket4j-core:4.10.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+tasks.named("bootJar"){
+	mainClass = 'com.example.springboot.Application'
+}
+tasks.named("bootRun"){
+	mainClass = 'com.example.springboot.Application'
 }

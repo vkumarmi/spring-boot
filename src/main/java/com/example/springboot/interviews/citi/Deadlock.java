@@ -1,4 +1,4 @@
-package com.example.springboot.interviews.city;
+package com.example.springboot.interviews.citi;
 
 public class Deadlock {
     private Object lock1=new Object();

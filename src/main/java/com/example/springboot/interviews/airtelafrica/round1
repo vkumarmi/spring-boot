@@ -1,0 +1,59 @@
+[3, 1 , 4, 7, 8, 2, 5]
+
+Index -> Day number
+Value -> Price of the stock
+
+Day 1 -> 3
+Day 2 -> 1
+
+Buy  & Sell onl;y once
+What is the max profit you can make?
+
+
+[3, 1 , 4, 7, 8, 2, 5]
+
+
+Public int maxPrice(int [] arr){
+Int buy;
+Int sell;
+Int max;
+
+Int i=0;
+buy=i;
+sell=i;
+max=arr[sell]-arr[buy];
+while(i<arr.length){
+if(arr[i+1]<arr[i]){
+buy=i+1;
+sell=buy;
+}
+if(arr[i+1]>arr[i]){
+sell=i+1;
+}
+if(max<arr[sell]-arr[buy])
+max=arr[sell]-srr[buy];
+i++;
+
+
+]
+
+
+}
+
+
+
+
+Public int getMaxPrice(int [] arr){
+
+Int maxPrice=0;
+Int j;
+for(int i=0;i<arr.length-2;j++){
+for(int j=i+1;j<arr.length-1;j++)
+if(arr[j]-arr[i]>maxPrice){
+maxPrice=arr[j]-arr[i];
+}
+Return maxPrice;
+}
+
+
+}

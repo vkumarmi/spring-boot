@@ -8,7 +8,7 @@ public class FactorialTest {
     @Test
     public void testFactorialRecursion(){
         long startTime=System.currentTimeMillis();
-        Assert.isTrue(factorial.factorial(1000)==1000);
+        Assert.isTrue(factorial.factorial(10)==3628800);
         System.out.println(System.currentTimeMillis()-startTime);
     }
 }

@@ -4,36 +4,40 @@ package com.example.springboot.design.system.banking;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SampleTest {
-/**
-	 * The bank/*/
+
+	 /** The bank*/
+
 
 
 
 	Bank bank;
-/**
-	 * The account number for Amelia Pond*/
 
+	/*
+	 * The account number for Amelia Pond
+	*/
 
 
 	Long ameliaPond;
-/**
-	 * The account number for Rose Tyler*/
-
+/*
+	 * The account number for Rose Tyler
+*/
 
 
 	Long roseTyler;
-/**
-	 * The account number for Acme Corp*/
-
+/*
+	 * The account number for Acme Corp
+*/
 
 
 	Long acmeCorp;
-/**
-	 * The account number for HackerRank*/
+/*
+	 * The account number for HackerRank
+*/
 
 
 
@@ -79,9 +83,9 @@ public class SampleTest {
 	}
 
 /*
-*
 	 * Debit an account.
 */
+
 
 
 
@@ -95,9 +99,9 @@ public class SampleTest {
 	}
 
 /*
-*
 	 * Test crediting accounts inside {@link Bank}.
 */
+
 
 
 

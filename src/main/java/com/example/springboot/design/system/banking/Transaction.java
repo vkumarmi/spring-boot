@@ -9,6 +9,7 @@ package com.example.springboot.design.system.banking;
 public class Transaction implements TransactionInterface{
 	private Long accountNumber;
 	private Bank bank;
+	private int attemptedPin;
 
 	/**
 	 *
@@ -22,20 +23,28 @@ public class Transaction implements TransactionInterface{
 	 *             Account validation failed.
 	 */
 	public Transaction(Bank bank, Long accountNumber, int attemptedPin) throws Exception {
-		// complete the function
+		this.accountNumber=accountNumber;
+		this.bank=bank;
+		this.attemptedPin=attemptedPin;
 	}
 
 	public double getBalance() {
 		// complete the function
-        return -1;
+        if(bank.authenticateUser(accountNumber,attemptedPin))
+		return bank.getBalance(accountNumber);
+        throw new RuntimeException("");
 	}
 
 	public void credit(double amount) {
 		// complete the function
+		if (bank.authenticateUser(accountNumber,attemptedPin))
+			bank.credit(accountNumber,amount);
 	}
 
 	public boolean debit(double amount) {
 		// complete the function
-        return true;
+        if(bank.authenticateUser(accountNumber,attemptedPin))
+        	return bank.debit(accountNumber,amount);
+        return false;
 	}
 }
