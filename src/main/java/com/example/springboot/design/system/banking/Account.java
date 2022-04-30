@@ -50,7 +50,7 @@ public abstract class Account {
 
 	public boolean debitAccount(double amount) {
 		// complete the function
-       if(balance>amount){
+       if(balance>=amount){
        	balance-=amount;
        	return true;
 	   }

@@ -1,10 +1,7 @@
 package com.example.springboot.design.system.banking;
 
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -43,7 +40,7 @@ public class SampleTest {
 
 	Long hackerRank;
 
-	@BeforeAll
+	@BeforeEach
 	public void setUp() throws Exception {
 		bank = new Bank();
 		Person person1ameliaPond = new Person("Amelia", "Pond", 1);
@@ -74,10 +71,10 @@ public class SampleTest {
 		assertTrue(acmeCorp + 1 == hackerRank,
 				"3rd and 4th accounts were not assigned sequential account numbers.");
 
-		assertEquals(bank.getBalance(ameliaPond), 0.0, 0);
-		assertEquals(bank.getBalance(roseTyler), 456.78, 0);
-		assertEquals(bank.getBalance(acmeCorp), 0.0, 0);
-		assertEquals(bank.getBalance(hackerRank), 9876543.21, 0);
+		assertEquals(bank.getBalance(ameliaPond), 0.0, 1.0);
+		assertEquals(bank.getBalance(roseTyler), 456.78, 1.0);
+		assertEquals(bank.getBalance(acmeCorp), 0.0, 1);
+		assertEquals(bank.getBalance(hackerRank), 9876543.21, 1);
 		assertNotEquals(bank.getBalance(ameliaPond), bank.getBalance(roseTyler));
 		assertNotEquals(bank.getBalance(acmeCorp), bank.getBalance(hackerRank));
 	}
@@ -116,10 +113,10 @@ public class SampleTest {
 		bank.credit(roseTyler, amount);
 		bank.credit(acmeCorp, amount);
 		bank.credit(hackerRank, amount);
-		assertEquals(beforeDeposit1 + amount, bank.getBalance(ameliaPond), 0);
-		assertEquals(beforeDeposit2 + amount, bank.getBalance(roseTyler), 0);
-		assertEquals(beforeDeposit3 + amount, bank.getBalance(acmeCorp), 0);
-		assertEquals(beforeDeposit4 + amount, bank.getBalance(hackerRank), 0);
+		assertEquals(beforeDeposit1 + amount, bank.getBalance(ameliaPond), 1);
+		assertEquals(beforeDeposit2 + amount, bank.getBalance(roseTyler), 1);
+		assertEquals(beforeDeposit3 + amount, bank.getBalance(acmeCorp), 1);
+		assertEquals(beforeDeposit4 + amount, bank.getBalance(hackerRank), 1);
 	}
 
 
@@ -139,10 +136,10 @@ public class SampleTest {
 		double beforeDeposit1 = transaction1.getBalance();
 		double amount = 23452.43;
 		transaction1.credit(amount);
-		assertEquals(beforeDeposit1 + amount, transaction1.getBalance(), 0);
+		assertEquals(beforeDeposit1 + amount, transaction1.getBalance(), 1);
 		assertTrue(transaction1.debit(amount), "Debit was unsuccessful.");
 		assertFalse(transaction1.debit(amount), "This transaction should have overdrawn the account.");
-		assertEquals(beforeDeposit1, transaction1.getBalance(), 0);
-		assertEquals(transaction1.getBalance(), bank.getBalance(ameliaPond), 0);
+		assertEquals(beforeDeposit1, transaction1.getBalance(), 1);
+		assertEquals(transaction1.getBalance(), bank.getBalance(ameliaPond), 1);
 	}
 }
